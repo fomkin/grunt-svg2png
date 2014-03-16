@@ -22,29 +22,8 @@ module.exports = function(grunt)
             files = [],
             total = 0;
 
-        this.data.files.forEach(function(fset)
-        {
-            var svg = grunt.file.expand(fset.src);
-
-            svg.forEach(function(svg)
-            {
-                var src = path.resolve(svg),
-                    dest;
-
-                if (fset.dest) {
-                    dest = path.resolve(fset.dest) + '/' + path.basename(svg);
-                } else {
-                    dest = src;
-                }
-
-                files.push({
-                    src: src,
-                    dest: dest.replace(/\.svg$/i, '.png')
-                });
-            });
-
-            total = files.length;
-        });
+        files = this.data.files;
+        total = files.length;
 
         grunt.log.subhead('Rasterizing SVG to PNG (' + files.length + ' files)...');
 
@@ -106,7 +85,7 @@ module.exports = function(grunt)
             function(err, result, code)
             {
                 grunt.log.write("\n");
-                grunt.log.ok("Rasterization complete.");
+                grunt.log.ok("Rasterization complete." + __dirname);
                 done();
             }
         );
