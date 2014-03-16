@@ -62,7 +62,7 @@ module.exports = function(grunt)
             process.stdout.clearLine();
             process.stdout.cursorTo(0);
 
-            var str = style('0%', 'yellow') + ' [ ',
+            var str = '[ ',
                 arr = [],
                 count = total,
                 percent = ((100 / total) * completed).toFixed(2);
@@ -85,7 +85,7 @@ module.exports = function(grunt)
             function(err, result, code)
             {
                 grunt.log.write("\n");
-                grunt.log.ok("Rasterization complete." + __dirname);
+                grunt.log.ok("Rasterization complete.");
                 done();
             }
         );
